@@ -52,6 +52,16 @@ flowchart LR
 The point is not the absolute number (this dataset is small) but the ratio, which is what
 drives a real bill at terabyte scale.
 
+## Screenshots (real run in the BigQuery sandbox)
+
+| Raw table: no partition, no descriptions | Silver: partitioned, clustered, partition filter required |
+|---|---|
+| ![bronze](docs/img/02-bronze-schema.png) | ![silver](docs/img/03-silver-details.png) |
+| **Query A estimate: 22 MB** | **Query C estimate: 1 MB** |
+| ![query A](docs/img/05-query-a.png) | ![query C](docs/img/06-query-c.png) |
+| **Data quality: 5/5 checks passed** | **Gold: daily sales model** |
+| ![dq](docs/img/07-dq-results.png) | ![gold](docs/img/08-gold.png) |
+
 ## Making the warehouse readable by AI agents
 
 * Datasets, tables and columns all carry descriptions (`OPTIONS(description=...)`), so an agent
